@@ -3,13 +3,13 @@
 import { GoogleGenAI } from "@google/genai";
 
 export async function POST(request: Request) {
-    const {subject} = await request.json();
+    const {topic} = await request.json();
     const ai = new GoogleGenAI({apiKey: process.env.G_KEY});
     const aiStream = await ai.models.generateContentStream({
         model:'gemini-2.5-flash',
-        contents: "Write a poem about " + subject || "nature",
+        contents: "Write a poem about " + topic,
         config: {
-            // systemInstruction: 'Always give answers in not more than 200 words.'
+            systemInstruction: 'Your answers should be in not more than 200 words long.'
         }
     }).catch((error) => {
         console.error("API Error:", error.messages);
