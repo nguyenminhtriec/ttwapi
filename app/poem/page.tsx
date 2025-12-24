@@ -4,7 +4,7 @@
 import { useState } from "react";
 
 export default function Home() {
-  const [topic, setSubject] = useState("");
+  const [topic, setTopic] = useState("");
   const [title, setTitle] = useState("");
   const [poem, setPoem] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -17,7 +17,7 @@ export default function Home() {
   }
   
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSubject(event.target.value);
+    setTopic(event.target.value);
   };
   const send = async () => {
     initState();
@@ -35,9 +35,8 @@ export default function Home() {
     }
     const reader = response.body?.getReader();
     const decoder = new TextDecoder();
-    // let done = false;
-    let aiPoem = "";
 
+    let aiPoem = "";
     while (true) {
       const { value, done} = await reader!.read();
       if (done) {
@@ -49,7 +48,7 @@ export default function Home() {
         setPoem(aiPoem);
       }
     }
-    setSubject("");
+    setTopic("");
     setIsLoading(false);
   };
 
@@ -70,7 +69,7 @@ export default function Home() {
       </div>
       <h1>{title}</h1>
       {isLoading && <p>Generating poem...</p>}
-      <div className='p-4 h-full overflow-y-auto text-shadow-blue-600'>
+      <div className='p-4 h-full overflow-y-auto text-gray-200 sm:text-sm md:text-md lg:text-lg '>
         <pre>{poem}</pre>
       </div>
     </div>  
