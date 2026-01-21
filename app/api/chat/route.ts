@@ -11,6 +11,13 @@ export async function POST(req: Request) {
     system: 'Your response should be concise and to the point and not more than 150 words. Don\'t use Markdown text.',
   });
 
-  return result.toUIMessageStreamResponse();
+  return result.toUIMessageStreamResponse({
+    headers: {
+      'Content-Type': 'text/event-stream',
+      'Access-Control-Allow-Origin': '*', // Uncomment if CORS is needed
+      // 'Access-Control-Allow-Methods': 'POST, OPTIONS',
+      // 'Access-Control-Allow-Headers': 'Content-Type',
+    },
+  });
   // return result.toDataStreamResponse(); // use with openAi models
 }
