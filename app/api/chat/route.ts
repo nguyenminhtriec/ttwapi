@@ -17,9 +17,9 @@ export async function POST(req: Request) {
       'Access-Control-Allow-Origin': '*', // Uncomment if CORS is needed
       'Access-Control-Allow-Methods': 'POST, OPTIONS',
       'Access-Control-Allow-Headers': 'Content-Type',
+      'X-Vercel-AI-UI-Message-Stream': 'v1',
     },
   });
-  // return result.toDataStreamResponse(); // use with openAi models
 }
 
 export async function OPTIONS() {
