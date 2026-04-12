@@ -4,7 +4,7 @@ import { GoogleGenAI } from "@google/genai";
 
 export async function POST(request: Request) {
     const {topic} = await request.json();
-    const ai = new GoogleGenAI({apiKey: process.env.G_KEY});
+    const ai = new GoogleGenAI({apiKey: ''});
     const aiStream = await ai.models.generateContentStream({
         model:'gemini-2.5-flash',
         contents: "Write a poem about " + topic,
