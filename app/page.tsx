@@ -15,7 +15,6 @@ export default function Home() {
         <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
           <pre>{text}</pre>
         </div>
-        
       </main>
     </div>
   );
