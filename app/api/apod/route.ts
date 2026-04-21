@@ -6,7 +6,15 @@ export async function POST(req: Request) {
 
     const url = `${baseUrl}?${params.toString()}`
     console.log("Getting data from", url);
-    const response = await fetch(url, {cache: "force-cache"});
+    const response = await fetch(url, {
+        cache: "force-cache",
+        headers: {
+            // 'Content-Type': 'text/event-stream',
+            'Access-Control-Allow-Origin': '*', // Uncomment if CORS is needed
+            'Access-Control-Allow-Methods': 'POST, OPTIONS',
+            'Access-Control-Allow-Headers': 'Content-Type',
+        },
+    });
     const data = await response.json();
 
     if (!response.ok) {
