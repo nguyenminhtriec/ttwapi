@@ -9,7 +9,7 @@ export async function POST(req: Request) {
     const response = await fetch(url, {
         // cache: "force-cache",
         headers: {
-            // 'Content-Type': 'text/event-stream',
+            'Content-Type': 'application/json',
             'Access-Control-Allow-Origin': '*', // Uncomment if CORS is needed
             'Access-Control-Allow-Methods': 'POST, OPTIONS',
             'Access-Control-Allow-Headers': 'Content-Type',
