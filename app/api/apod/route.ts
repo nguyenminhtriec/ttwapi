@@ -23,6 +23,16 @@ export async function POST(req: Request) {
     return Response.json(data);
 }
 
+export async function OPTIONS() {
+  return new Response(null, {
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "POST, OPTIONS",
+      "Access-Control-Allow-Headers": "Content-Type",
+    },
+  });
+}
+
 function harmonizeParams(date: string, dateOffset=3) {
     const apiKey: string = process.env.APOD_API_KEY || '';
     const stamp = Date.parse(date);
